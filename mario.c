@@ -7,7 +7,7 @@ int main(void)
 do{
     n = get_int("Height: ");
 }
-while(n < 1);
+while(n < 1 || n > 8);
 
 for(current_row = 1; current_row <= n; current_row++)
     {
