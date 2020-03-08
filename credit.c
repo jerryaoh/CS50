@@ -44,14 +44,12 @@ int main (void){
         temp_odd_digits /= 100;
         sum_odd_digits += temp_odd_digits % 10;
     }
-    printf("Odd: %i Even: %i\n", sum_odd_digits, sum_even_digits);
     //sum_odd_digits + sum_even_digits. Check if last digit is 0. If not, pass a 0 to next function.
     if((sum_odd_digits + sum_even_digits) % 10 != 0)
     {
         card_number = 0;
     }
     
-    printf("%li\n", card_number);
     //print card type if valid
     card_type(card_number);
     
