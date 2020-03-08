@@ -58,7 +58,7 @@ int main (void){
 void card_type(long n){
     
     //The first part of the function aims to determine the number of digits and the first number
-    int no_of_digits = 0, first_digit;
+    int no_of_digits = 0, first_digit, first_2_digits;
     long temp;
 
     temp = n;
@@ -70,7 +70,7 @@ void card_type(long n){
     }
 
     first_digit = (n / (pow(10, (no_of_digits - 1))));
-
+    first_2_digits = (n / (pow(10, (no_of_digits - 2))));
     /*The second part of the function is a series of conditional statements that prints
     the card type based on the number of digits and first_digit unique to the card type*/
 
@@ -78,11 +78,11 @@ void card_type(long n){
     {
         printf("VISA\n");
     }
-    else if(no_of_digits == 15 && first_digit == 3)
+    else if(no_of_digits == 15 && (first_2_digits == 34 || first_2_digits == 37))
     {
         printf("AMEX\n");
     }
-    else if(no_of_digits == 16 && first_digit == 5)
+    else if(no_of_digits == 16 && (first_2_digits == 51 || first_2_digits == 52|| first_2_digits == 53||            first_2_digits == 54|| first_2_digits == 55))
     {
         printf("MASTERCARD\n");
     }
