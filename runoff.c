@@ -143,18 +143,21 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    for (int i = 0; i < voter_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
-    int j = 0;
-
-    for (int k = 0; k < candidate_count; k++)
+        if (!candidates[i].eliminated)
         {
-        if(preferences[i][j] == k && candidates[k].eliminated == false)
+            for (int voter = 0; voter < voter_count; voter++)
+            {
+                for (int rank = 0; rank < candidate_count; rank++)
                 {
-                candidates[k].votes++;
-                break;
+                    if(preferences[voter][rank] == i)
+                    {
+                        candidates[i].votes++;
+                        break;
+                    }
                 }
-        j++;
+            }
         }
     }
 }
@@ -166,7 +169,7 @@ bool print_winner(void)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if(candidates[i].votes >= min_votes_needed)
+        if(candidates[i].votes > min_votes_needed)
         {
             printf("%s\n", candidates[i].name);
             return true;
@@ -194,9 +197,9 @@ int find_min(void)
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
-    for(int i = 0; i < candidate_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
-        if(candidates[i].votes != min)
+        if (candidates[i].votes != min && candidates[i].eliminated == false)
         {
             return false;
         }
