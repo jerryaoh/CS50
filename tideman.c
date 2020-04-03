@@ -22,6 +22,7 @@ pair;
 // Array of candidates
 string candidates[MAX];
 pair pairs[MAX * (MAX - 1) / 2];
+pair pairs2[MAX * (MAX - 1) / 2];
 
 int pair_count;
 int candidate_count;
@@ -155,7 +156,8 @@ void add_pairs(void)
 // Insertion Sort
 void sort_pairs(void)
 {
-    int max_diff, max_index, temp;
+    int max_diff, max_index;
+    pair temp;
 
     for (int i = 0; i < pair_count - 1; i++)
     {
@@ -173,9 +175,9 @@ void sort_pairs(void)
 
         if (max_index != i)
         {
-            temp = i;
-            i = max_index;
-            max_index = temp;
+            temp = pairs[i];
+            pairs[i] = pairs[max_index];
+            pairs[max_index] = temp;
         }
     }
 }
