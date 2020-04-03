@@ -22,7 +22,6 @@ pair;
 // Array of candidates
 string candidates[MAX];
 pair pairs[MAX * (MAX - 1) / 2];
-pair pairs2[MAX * (MAX - 1) / 2];
 
 int pair_count;
 int candidate_count;
@@ -185,20 +184,25 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    /*for (int i = 0; i < pair_count; i++)
+    for (int i = 0; i < pair_count; i++)
     {
-        if(its not a loop)
+        int j = i;
+        while (j >= 0)
         {
-            locked[pairs[i].winner][pairs[i].loser] = true;
-        }
-
-
-        if (its a loop)
-        {
-            continue;
+            if (j == 0)
+            {
+                locked[pairs[i].winner][pairs[i].loser] = true;
+                break;
+            }
+            
+            j--;
+            
+            if (pairs[i].loser == pairs[j].winner)
+            {
+                break;
+            }
         }
     }
-    return;*/
 }
 
 // Print the winner of the election
