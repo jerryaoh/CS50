@@ -225,6 +225,7 @@ void print_winner(void)
         if (i == 0)
         {
             max_sources = arrow_source[0];
+            continue;
         }
 
         if (max_sources < arrow_source[i])
