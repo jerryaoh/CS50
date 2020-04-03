@@ -194,9 +194,9 @@ void lock_pairs(void)
                 locked[pairs[i].winner][pairs[i].loser] = true;
                 break;
             }
-            
+
             j--;
-            
+
             if (pairs[i].loser == pairs[j].winner)
             {
                 break;
@@ -208,7 +208,7 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-    int arrow_source[MAX], max_sources = 0, winner;
+    int arrow_source[MAX], max_sources, winner;
 
     for (int i = 0; i < candidate_count; i++)
     {
@@ -216,22 +216,31 @@ void print_winner(void)
 
         for (int j = 0; j < candidate_count; j++)
         {
-            if(locked[i][j])
+            if (locked[i][j])
             {
                 arrow_source[i]++;
             }
+        }
+
+        if (i == 0)
+        {
+            max_sources = arrow_source[0];
+        }
+
+        if (max_sources < arrow_source[i])
+        {
+            max_sources = arrow_source[i];
         }
     }
 
     for (int k = 0; k < candidate_count; k++)
     {
-        if(arrow_source[k] > max_sources)
+        if (arrow_source[k] == max_sources)
         {
-            max_sources = arrow_source[k];
-            winner = k;
+            printf("%s ", candidates[k]);
         }
     }
 
-    printf("%s\n", candidates[winner]);
+    printf("\n");
 }
 
