@@ -99,6 +99,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         continue;
                     }
 
+                    else if (i + m >= height || j + n >= width)
+                    {
+                        continue;
+                    }
+
                     else
                     {
                         FinalBlue += image[i + m][j + n].rgbtBlue;
