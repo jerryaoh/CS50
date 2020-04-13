@@ -112,6 +112,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
+            GX[i][j].blue = 0;
+            GX[i][j].red = 0;
+            GX[i][j].green = 0;
+
             for (int n = -1; n < 2; n += 2)
             {
                 for (int m = -1; m < 2; m++)
@@ -152,6 +156,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
+            GY[i][j].blue = 0;
+            GY[i][j].red = 0;
+            GY[i][j].green = 0;
+
             for (int m = -1; m < 2; m += 2)
             {
                 for (int n = -1; n < 2; n++)
