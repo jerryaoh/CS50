@@ -125,13 +125,14 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     {
                         continue;
                     }
+
                     else
                     {
                         if (m == -1 || m == 1)
                         {
                             GX[i][j].blue += image[i + m][j + n].rgbtBlue * n;
-                            GX[i][j].red += image[i + m][j + n].rgbtBlue * n;
-                            GX[i][j].green += image[i + m][j + n].rgbtBlue * n;
+                            GX[i][j].red += image[i + m][j + n].rgbtRed * n;
+                            GX[i][j].green += image[i + m][j + n].rgbtGreen * n;
                         }
 
                         else if (m == 0)
@@ -170,8 +171,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                         if (n == -1 || n == 1)
                         {
                             GY[i][j].blue += image[i + m][j + n].rgbtBlue * m;
-                            GY[i][j].red += image[i + m][j + n].rgbtBlue * m;
-                            GY[i][j].green += image[i + m][j + n].rgbtBlue * m;
+                            GY[i][j].red += image[i + m][j + n].rgbtRed * m;
+                            GY[i][j].green += image[i + m][j + n].rgbtGreen * m;
                         }
 
                         else if (n == 0)
